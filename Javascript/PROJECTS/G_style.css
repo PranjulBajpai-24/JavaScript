@@ -1,0 +1,126 @@
+/* Basic styles for body and html to center the wrapper */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Dark background color */
+    color: #fff; /* Default text color */
+}
+
+/* Style the wrapper */
+#wrapper {
+    text-align: center;
+    background-color: #333; /* Darker background for the wrapper */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Style for the main heading */
+h1 {
+    font-size: 28px;
+    color: #ffcc00; /* Attractive color for the heading */
+}
+
+/* Style for the paragraphs */
+p {
+    font-size: 20px;
+    color: #ccc; /* Lighter color for the paragraphs */
+}
+
+/* Style the form elements */
+.form {
+    margin-top: 20px;
+}
+
+label#guess {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffcc00; /* Matching label color with the heading */
+}
+
+input.guessField {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #555; /* Dark border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: whitesmoke; /* Dark input background */
+    color: dark grey; /* Light input text color */
+    font-size: 20px;
+    font-weight: 600;
+}
+
+input.guessField::placeholder {
+    color: #bbb; /* Placeholder text color */
+}
+
+input.guessSubmit {
+    padding: 10px 20px;
+    background-color:  darkgreen; /* Bright button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+input.guessSubmit:hover {
+    background-color: darkgreen; /* Slightly darker on hover */
+}
+
+/* Style for the result paragraphs */
+.resultParas {
+    margin-top: 20px;
+}
+
+.resultParas p {
+    font-size: 20px;
+    color: #ffcc00; /* Matching result text color with the heading */
+}
+
+span.guesses, span.lastResult {
+    font-weight: bold;
+    color: green; /* Bright color for the result spans */
+}
+
+.button {
+    margin-top: 24px;
+    cursor: pointer;
+    color: green; /* Bright button color */
+    text-decoration: underline;
+}
+
+.LowOrHigh h2 {
+    font-size: 18px;
+    color: #ffcc00; /* Matching message color with the heading */
+}
+.button2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ff6600; /* Bright button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline from link buttons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button2:hover {
+    background-color: #e65c00; /* Slightly darker on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}

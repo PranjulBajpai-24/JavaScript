@@ -1,0 +1,60 @@
+/* Center the clock in the middle of the screen */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#333; /* Light background color */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Center the clock container */
+.centre {
+    text-align: center;
+}
+
+/* Style for the banner */
+.banner {
+    margin-bottom: 20px;
+}
+
+.banner span {
+    font-size: 24px;
+    font-weight: bold;
+    color:beige;
+}
+
+/* Style for the clock display */
+.clock {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    background-color: beige;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.button2 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ff6600; /* Bright button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline from link buttons */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button2:hover {
+    background-color: #e65c00; /* Slightly darker on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+

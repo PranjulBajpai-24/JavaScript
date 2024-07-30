@@ -1,0 +1,566 @@
+JavaScript notes
+
+console.log("hello") - to print hello
+console.table([a,b,c]) - to print a,b,c in tabular format
+const - to fix a value (constant)
+let , var - to store variables (use let as scope of var is completely global)
+"use strict" - treat all JS code as newer version 
+alert -  used in browser not in node js
+
+Variables-
+number-range is 2^53
+bigint-for big integer values
+string-""
+boolean-true/false
+null-null value
+undefined-we have defined the variable but not given any value
+symbol-for unique
+
+lat value=Number(33) - value will be only a number
+
+┌─────────┬───────────┐
+│ (index) │ Values    │
+├─────────┼───────────┤
+│ 0       │ 1         │
+│ 1       │ 0         │
+│ 2       │ 343       │
+│ 3       │ ''        │
+│ 4       │ 'ffd'     │
+│ 5       │ null      │
+│ 6       │ undefined │
+│ 7       │ -333      │
+└─────────┴───────────┘
+┌─────────┬────────┐
+│ (index) │ Values │
+├─────────┼────────┤
+│ 0       │ true   │
+│ 1       │ false  │
+│ 2       │ true   │
+│ 3       │ false  │
+│ 4       │ true   │
+│ 5       │ false  │
+│ 6       │ false  │
+│ 7       │ true   │
+└─────────┴────────┘
+
+console.log("2">1);
+console.log(12>"22");
+console.log(null>0);
+console.log(null==0);
+console.log(null>=0);
+true
+false
+false
+false
+true
+
+=== - it compares the data type as well
+console.log("2"===2);
+false 
+
+to get min any random integer b/w any range:
+min=10
+max=30
+console.log(Math.floor(Math.random()*(max-min+1))+min);
++++++++++++++++++++++++++++++++++++++++
+Dates:
+ mydate=new Date()
+console.log(mydate);
+console.log(mydate.toString());
+console.log(mydate.toDateString());
+console.log(mydate.toLocaleString());
+2024-04-10T09:19:42.322Z
+Wed Apr 10 2024 14:49:42 GMT+0530 (India Standard Time)
+Wed Apr 10 2024
+10/4/2024, 2:49:42 pm
+
+let createddate=new Date(24,0,30) \\months start with 0
+console.log(createddate.toDateString());
+Wed Jan 30 1924
+++++++++++++++++++++++++++++++++++++
+Array
+push(x)-adds x to the Array
+pop-removes the last element
+unshift(x)-adds x at the beginning of the array
+shift-removes first element
+join-converts array to string
+slice(a,b)-give a part of array from a to b-1
+splice(a,b)-gives a part of array from a to b and removes this part from the original array
+
+name="Pranjul Bajpai"
+console.log(Array.from(name));
+console.log(Array.from({myself:"Pranjul"}));
+[
+  'P', 'r', 'a', 'n',
+  'j', 'u', 'l', ' ',
+  'B', 'a', 'j', 'p',
+  'a', 'i'
+]
+[
+  'P', 'r', 'a', 'n',
+  'j', 'u', 'l', ' ',
+  'B', 'a', 'j', 'p',
+  'a', 'i'
+]
+[] 
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+objects
+
+singleton-if we declare as literals thek it is not singleton_if
+objects literals-
+const symbol=Symbol();
+const myobj={
+    name:"pranjul",
+    age:20,
+    email:"pranjul@apple.com",
+    city:"Kanpur",
+    [symbol]:"mysym1"
+}
+console.log(myobj["name"])
+console.log(myobj["age"])
+console.log("My city is ",myobj.city," and my email is ",myobj.email)
+console.log(myobj.symbol);
+
+object.freeze(myobj)- to freeze the values of an object
++++++++++++++++++++++++++++++++++++++++++++++++
+Functions with object
+myobj.sum=function(a,b){
+    console.log(a+b);
+}
+console.log(myobj.sum(3,4));
+7
+
+this-used to access the data members of same object
+singleton object-const myobj2=new Object()
+non-singleton object-const myobj={}
+
+object.assign-to join two objects
+const obj1 = {1:"a",2:"b"}
+const obj2 = {3:"c",4:"d"}
+const obj3=Object.assign({},obj1,obj2) / const obj3={...obj1,...obj2}
+console.log(obj3);
+{ '1': 'a', '2': 'b', '3': 'c', '4': 'd' }
+
+de-structuring-unpacking of values from arrays or objects(basically used to assign easier names)
+const {name:n}=myobj;
+const{age}=myobj;
+console.log(n);
+console.log(age);
++++++++++++++++++++++++++++++++++++
+API-a kind of object but without name 
+use json formatter to understand apis
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Function without Object
+function add(a,b)
+{
+    return(a+b);
+}
+const res=add(7,9)
+console.log("result: ",res); 
+result:  16
+a,b-parameters
+7,9-arguments
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Scopes:
+something which is written within {} is called scope.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Arrow Functions:
+this-refers to the current context
+
+const add2 = (n1,n2)=>{
+    return n1+n2;
+}
+console.log(add2(4,6));
+
+implicit return:
+const add2 = (n1,n2)=> n1+n2;
+//we have not used return keywor and it is assumed that there is a return keyword as there are no curly braces
+
+explicit return:
+when we use paranthesis and return keyword
+if paranthesis is used then writing return is compulsory and if we dont use return then there is no need to write return
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+IIFE- Immediately Invoked Function Expression
+used to immediately execute the function and to protect the function from the pollution of variables of global scope
+(function add(a,b)
+{
+    console.log(a+b);
+})("ab",9);
+ab9
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Java Execution context
+this keyword is used for global execution context
+value of this in browser is window object 
+there are 3 execution context
+1. Global Execution context
+2. Functional Execution context
+3. Eval Code execution context
+
+Steps of execution of any code
+1- Global Execution (creation of this)
+2- Memory/Creation phase (collection of all variables and keeping them at a place and allotment of spaces to them. Undefined is alloted to all the variables )
+3- Execution phase (assigning of values to the variables and calculation)
+if there are functions then at executional phase then a block(a new variable environment +Executtion thread) will be created which will again go to memory phase and exection phase for the variables inside the function block and the value returned by the function will be sent to the global exection block and after that the block created will be deleted.
+
+call stack- LIFO -how the funtions are called
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Control Statements
+<,>,<=,>=,==,!=,===
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Truthy & Falsy Values
+Falsy Values: false, 0, -0,Bigint 0n, "", null, undefinrd, NaN
+Truthy Values: true, "0", "false", " ", [] , {}, function(){}
+
+false==0  --> true
+false==''  --> true
+true==''  --> true
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Nullish Coalescing Operator (??): null undefined
+it returnes the first value if the value is not null or undefined
+it returns the value other than null or undefined if one of them is null or undefined
+
+let v;
+v=5??10
+console.log(v);
+--> 5
+
+let v;
+v=null??10
+console.log(v);
+--> 10
+
+let v;
+v=undefined??10
+console.log(v);
+--> 10
+
+let v;
+v=undefined??null
+console.log(v);
+--> null
+
+let v;
+v=null??undefined
+console.log(v);
+--> undefined
+
+++++++++++++++++++++++++++++++++++++++++
+break- used to break the control flow of a loop and send it out of loop
+continue- skip the condition once and then continues with the loop
+for of loop- used to iterate over each element of the array.
+s="abcd"
+for (const i of s) {
+    console.log(i);
+}
+a
+b
+c
+d
+
+for in loop: used to iterate over object
+s="abcd"
+for (const i in s) {
+    console.log(i);
+}
+0
+1
+2
+3 
+++++++++++++++++++++++++++++++++++++++++++
+Maps:
+it holds the key value pair and remembers the insertion order 
+map.set(1,"one")
+map.set(2,"two")
+map.set(3,"three")
+console.log(map);
+for (const [a,b] of map) {
+    console.log(`${a} :- ${b}`);
+}
+1 :- one
+2 :- two
+3 :- three
+
+forEach-used to visit each value of array,object etc.
+arr.forEach((val)=>console.log(val*3))
+
+filter-visits eachh value,checks for condition and returns suitable values
+const gr8=num.filter( (val) => val>4)
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+DOM- Document Object Model
+
+document.getElementById-used to get the element by any unique id,property or attribute
+document.getElementsByClassName('heading')
+HTMLCollection [h1#title.heading, title: h1#title.heading]
+
+.innterText-to get visible text content of an element
+title.innerText
+'Pranjul is Learning DOM'
+
+.textContent-to get visible as well as hidden text content of an element
+title.textContent
+'Pranjul is Learning DOM THIS IS FOR TEST'
+
+.innerHTML-to get visible,hidden as well as inner HTML text content of an element
+title.innerHTML
+'Pranjul is Learning DOM<span style="display: none;"> THIS IS FOR TEST</span>'
+
+querySelector-used to select the first query
+document.querySelector('h2')
+<h2>Lorem ipsum dolor sit amet consectetur.</h2>
+
+querySelector-used to select all the queries
+document.querySelectorAll('h2')
+
+document.querySelector('title') //used to get title of any document
+<title>DOM Learning</title>
+
+document.querySelector('#title') // # is used to select the query using id
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('.heading') // . is used to select the query using class
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+to change color of first element of list to red-
+const ul=document.querySelector('ul') //selecting list
+colorchange=ul.querySelector('li') //selecting first element
+colorchange.style.backgroundColor='red' //changing color
+
+Nodelist-it is similiar to array but not array
+arr=ul.querySelectorAll('li')
+NodeList(3) [li, li, li] // nodelist of 3 elements of the ul
+
+to select elements of nodelist
+arr.forEach(function(i) {
+    i.style.font='Helvetica'
+})
+
+converted_array=Array.from(list) // to convert any thing to array.Now we can use loops to iterate over elements.
+
+console.log(parent.children);-gives child of any class(here class is stored in parent)
+
+.parentElement-gives parent of any chind node
+
+.childNodes-gives nodelistof all the nodes of any parent
+
+DOM MANIPULATION:
+ const div=document.createElement('div')
+    console.log(div);
+    div.className="main"
+    div.id=Math.round(Math.random()*10+1);
+    div.setAttribute("title","generated title")
+    div.style.backgroundColor="green"
+    div.style.padding="12px"
+    //div.innerText="DOM WALA DIV"
+    const addtext=document.createTextNode("DOM WALA DIV")
+    div.appendChild(addtext)
+    document.body.appendChild(div)
+
+    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    EVENTS:
+    document.getElementById('owl').onclick=function(){
+        alert('owl clicked')
+    }
+
+    document.getElementById('owl').addEventListener('click',function(params) {
+        alert(owl clicked)
+    },false)
+
+    this can also be done using 
+    1- attachEvent()      2-if used injQuery then use on
+
+    Some Basic Events-
+    type,timestamp,defaultPrevented
+    target,toElement,srcElement,currentTarget
+    clientX,clientY,screenX,screenY
+    altKey,ctrlKey,shiftKey,keyCode
+
+Event Propagation-
+Event Propagation determines in which order the elements receive the event. There are two ways to handle this event propagation order of HTML DOM is Event Bubbling and Event Capturing.
+capturing mode-true-it goes top to bottom
+bubling mode-false(default)-it goes bottom to top
+stopPropogation-stops bubbling to the upper method
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Asynchronous code
+**JAVASCRIPT IS A SYNCHRONOUS LANGUAGE  **JAVSCRIPT IS A SINGLE THREADED LANGUAGE
+It is single threaded-it executes one line of code at a time- each operation waits for the last one to complete before executing
+Memory Heap- used for memory location
+
+setTimeout-calls a function after a number of milliseconds.
+myTimeout = setTimeout(function, milliseconds);
+
+setInterval-calls a function at specified intervals (in milliseconds).
+myInterval = setInterval(function, milliseconds);
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+XMLHttpRequest()- XMLHttpRequest(XHR) objects are used to interact with servers.
+XHR objects are used to request data from a server and to send data to a server.
+
+const xhr=new XMLHttpRequest()
+    xhr.open('GET',requestURL)
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+    }
+    xhr.send()
+
+JSON.parse()=used to conver string into parse
+
+const requestURL='https://api.github.com/users/hiteshchoudhary'
+const xhr=new XMLHttpRequest()
+    xhr.open('GET',requestURL)
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            const data=JSON.parse(this.responseText)
+            console.log(data.followers);
+        }
+    }
+    xhr.send()
+Output:
+2       VM765:4 
+3       VM765:4
+4       VM765:4
+24872   VM765:7 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Promise- the Promise object reprsents the eventual completion or failiure of an asynchronous operation and its resulting value
+A promise has 3 states:-
+1. Pending: initial state, neither fulfilled nor rejected.
+2. fulfilled: the operationwas successfully completed
+3. rejected: the operation failed to complete
+Promise.then()- used to handle the fulfilled state of a promise99
+Promise.catch()- used to handle the rejected state of a promise
+Promise.finally()- used to handle the final state of a promise
+
+Use of resolve in promise-Promise.resolve() will call the then() method with two callbacks it prepared
+the first callback is called when the promise is fulfilled and the second callback is called when the promise is rejected
+Promise.reject()- used to reject the promise.it is used to handle errors.It will call the .catch function to print the error
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+fetch(): The fetch() method is used to fetch resources (including across the network) from the network returning a promise which is fulfilled once the responsenis available.
+A fetch() promise only rejects when the request fails, for example, because of a badly-formed request URL or a network error. A fetch() promise does not reject if the server responds with HTTP status codes that indicate errors (404, 504, etc.). Instead, a then() handler must check the Response.ok and/or Response.status properties.
+read about fetch from: https://developer.mozilla.org/en-US/docs/Web/API/fetch
+** fetch statements are executer first.....i.e. the get highest priority
+
+response_of_fetch=fetch('something')
+fetch is divided into 2 parts-
+1. data(memory space for data), OnFulfilled[](to store resolution) and OnRejection[](to store reject part)
+2. to acces web browser/node APIs which gives a networks request. Any response fron network request goes to OnFulfilled and if the request is unable to go, it goes to OnRejection.Initially the variable data is empty which is filled by the function present in OnFulfilled or OnRejection.Now data fulfills the response_of_fetch variale in the global memory. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+OBJECT ORIENTED PROGRAMMING
+object-collection of properties and methods
+
+Constructer Function-
+**const promise1=new Promise()     **const date=new Date()
+here new is the Constructer function-it allows to create multiple instances with a single object literal.
+As soon as we use new keyword,
+Step 1: An empty object(known as instance) is created everytime
+Step 2:A Constructer function is called due to new keyword
+Step 3: The object is passed to the function as this
+Step 4: The function returns the object
+
+Prototypal behaviour of JavaScript (default behaviouroj JS): objects and methods can be shared, extended, and copied
+1. Every object has a property called prototype which is a reference to another object.
+2. The prototype object has a property called prototype which is a reference to another object.
+3. The prototype chain is a chain of objects linked by the prototype property.
+4. The prototype chain is used to look up properties of an object.
+5. The prototype chain is used to look up methods of an object.
+6. The prototype chain is used to look up constructors of an object.
+7. The prototype chain is used to look up the prototype of an object.
+
+Everything present in JS is an object i.e they all behaive as object .Function is a function as well as an object, string is a string as well as an object, array is a array as well as an object.
+
+for inheritance in JS:
+1. Object.setPrototypeOf(TeachingSupport, Teacher) -  outside theobjects
+2. __proto__ - inside the object
+
+class Admin extends User
+const user1 = new Admin("Pranjul", 30,"pranjul@gmail.com","pranjul@123");
+const User2=new User("Bajpai Ji",30)
+console.log(user1 instanceof User);
+console.log(user1 instanceof Admin);
+console.log(User2 instanceof User);
+console.log(User2 instanceof Admin);
+true
+true
+true
+false
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+call: use to pass current exection context to some other function
+static: The static keyword defines a static method or field for a class, or a static initialization block.
+**Static properties cannot be directly accessed on instances of the class. Instead, they're accessed on the class itself.
+
+static UniqueID(){
+        console.log(Math.floor(Math.random() * 10));
+    }
+pranjul.UniqueID();  will give error
+
+bind(): With the bind() method, an object can borrow a method from another object.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Object Properties:
+1. Object.keys(obj) - returns an array of the object's own enumerable property names, in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well).
+2. Object.values(obj) - returns an array of a given object's own enumerable property values, in the same order as that provided by a for...in loop (the difference being that a for -in loop enumerates properties in the prototype chain as well).
+3. Object.entries(obj) - returns an array of a given object's own enumerable string-keyed property [key, value] pairs, in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well).
+writable: if true , the value can be changed, otherwise it's read-only
+enumerable: if true , then listed in loops, otherwise not listed.
+configurable: if true , the property can be deleted and these attributes can be modified, otherwise not.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Getter and Setter:
+1. Getter: A getter is a method that gets the value of a specific property.
+2. Setter: A setter is a method that sets the value of a specific property.
+Use of Getter and Setter : Getters and setters allow you to control how your object properties are accessed and modified. Getters and setters can be used to validate data before it is set to an object. Getters and setters can be used to create properties that are calculated on the fly.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Lexical Scoping and Closures:
+1. Lexical scoping: Lexical scoping is the scoping rule that determines the scope.Inner functions can access the variables of outer functions but the vice-versa in not possible.
+2. Closures: A closure is a function that remembers the variables from the lexical environment in which it was created. When a function is created in JavaScript, it forms a closure with the variable environment in which that function was created. A closure is the combination of a function bundled together with a referencing environment. A closure gives you access to an outer function's scope from an inner function. In other words, a closure lets an inner function "remember" and access variables from the outer function even when the outer function has returned.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+TYPES OF ARRAYS:
+1. Continouos Array       2. Holey Array
+
+Types Of Optimisation Of araay In JS:
+1.SMI (small integer)       2.Packed element      3.Double (float, string, function)
+
+a. Packed SMI array (PACKED_SMI_ELEMENTS): it is the best kind of array as it is the most optimised array.It contains only integers(decimals are also not allowed) arr=[1,2,3,4,5]
+b. Packed double array (PACKED_DOUBLE_ELEMENTS): it is the second best kind of array.It contains entegers as well as Double elements. arr=[1,2,3.0,4,5,6.4]
+c. Packed array(PACKED_ELEMENTS): it contains integers, decimals as well as String values. arr=[1,2,3.0,'5']
+c. Holey SMI array (HOLEY_SMI_ELEMENTS): it contains Gaps i.e. holes in the array. arr=[1,2,3,,4,5]
+d. Holey double array (HOLEY_DOUBLE_ELEMENTS): it contains Gaps i.e. holes in the array. arr=[1,2,3.0,,4,5,6
+e. Holey array (HOLEY_ELEMENTS): it contains Gaps i.e. holes in the array. arr=[1,2,3.0,'5',,6,7,
+
+optimisation - [SMI > DOUBLE > PACKED]   [H_SMI > H_DOUBLE > H_PACKED]
+
+***ONCE AN SMI ARRAY IS CONVERTED TO PACKED_DOUBLE OR PACKED , IT CANT BE CONVERTED BACK TO SMI (IN OTHER WORDS, ONCE AN ARRAY IS DEGRADED, IT CANT BE UPGRADED)
+
+const arr=[1,2,3,4]
+arr.push(5.0)
+arr.push('f')
+arr[10]=10
+console.log(arr)
+console.log(arr[10]);
+console.log(arr[9]);
+console.log(arr[90]);
+
+[ 1, 2, 3, 4, 5, 'f', <4 empty items>, 10 ]
+10
+undefined
+undefined

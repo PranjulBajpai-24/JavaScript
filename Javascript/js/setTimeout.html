@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PRANJUL BAJPAI</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    const changename=function(){
+        document.querySelector("h1").innerHTML="PRANJUL BAJPAI IS THE BEST"
+    }
+    const change=setTimeout(changename,2000)
+    document.getElementById("stop").addEventListener('click',function(){
+        clearTimeout(change)
+    })
+</script>
+</html>

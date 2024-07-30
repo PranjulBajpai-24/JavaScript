@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .id-card {
+            width: 350px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .id-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .id-card h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .id-card p {
+            margin: 5px 0;
+            color: #777;
+        }
+        .id-card .details {
+            margin: 15px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .id-card .details p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="id-card">
+        <img id="profile-pic" src="profile-pic.jpg" alt="Profile Picture">
+        <h2 id="name"></h2>
+        <p id="username"></p>
+        <div class="details">
+            <p id="location"></p>
+            <p id="twitter_username"></p>
+        </div>
+        <p id="bio"></p>
+    </div>
+
+    <script>
+        const requestURL = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', requestURL);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                document.getElementById('name').innerText = `Name: ${data.name}`;
+                document.getElementById('username').innerText = `Username: ${data.login}`;
+                document.getElementById('profile-pic').src = data.avatar_url;
+                document.getElementById('twitter_username').innerText = `Company: ${data.twitter_username}`;
+                document.getElementById('location').innerText = `Location: ${data.location}`;
+                document.getElementById('bio').innerText = `Bio: ${data.bio}`;
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

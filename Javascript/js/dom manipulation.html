@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation</title>
+</head>
+<body style="background-color: #212121; color: blanchedalmond;">
+  <ul class="language">
+    <li>JAVASCRIPT</li>
+   </ul>
+</body>
+<script>
+  function addLanguage(langname) {
+    const newLi = document.createElement('li'); // Corrected variable name
+    newLi.innerHTML = `${langname}`; // Use textContent for text content
+    document.querySelector('.language').appendChild(newLi);
+  }
+  addLanguage("PYTHON");
+  addLanguage("TYPESCRIPT");
+
+  function optimised_addLanguage(langname){
+    const li=document.createElement('li')
+    li.appendChild(document.createTextNode(langname))
+    document.querySelector('.language').appendChild(li)
+  }
+  optimised_addLanguage('GOLANG')
+
+  //EDIT 
+  const secondlang = document.querySelector("li:nth-child(2)")
+  //secondlang.innerHTML="MOJO"
+  const newli=document.createElement('li')
+  newli.textContent="MOJO"
+  secondlang.replaceWith(newli)
+
+  const firstlang = document.querySelector("li:nth-child(1)")
+  firstlang.outerHTML='<li style="color: red;"> JAVA </li>'
+
+  //REMOVE LAST CHILD
+  const lastlang=document.querySelectorM('li:last-child')
+  lastlang.remove()
+</script>
+</html>
